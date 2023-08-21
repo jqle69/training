@@ -1,0 +1,73 @@
+import tkinter as tk
+
+class EmployeeForm(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.title("Employee Form")
+        self.geometry("300x200")
+
+        self.label_name = tk.Label(self, text = "Enter Name:")
+        self.label_name.grid(row = 0, column = 0)
+        self.entry_name = tk.Entry(self)
+        self.entry_name.grid(row = 0, column = 1)
+
+        self.label_age = tk.Label(self, text = "Enter Age:")
+        self.label_age.grid(row = 1, column = 0)
+        self.entry_age = tk.Entry(self)
+        self.entry_age.grid(row = 1, column = 1)
+
+        self.btnSubmit = tk.Button(self, text = "Submit", command = self.submit)
+        self.btnSubmit.grid(row = 2, columnspan = 2, pady = 10)
+    
+        def submit(self):
+            name = self.entry_name.get()
+            age = self.entry_age.get()
+
+            self.display_employee_info(name,age)
+
+        def display_employee_info(self, name, age):
+            info_window = tk.Toplevel(self)
+            info_window.title("Employee Information")
+            info_window.geometry("300x100")
+
+            infolbl = tk.Label(info_window, text = "Emp Info")
+            infolbl.pack(pady = 10)
+            namelbl = tk.Label(info_window, text = f"Name: {name}")
+            namelbl.pack()
+            agelbl = tk.Label(info_window, text = f"Age: {age}")
+            agelbl.pack()
+
+class ManagerForm(EmployeeForm):
+    def __init__(self):
+        super().__init__()
+        self.title("Manager Form")
+        self.geometry("400x250")
+
+        self.deptlbl = tk.Label(self, text = "Dept. Name:")
+        self.deptlbl.grid(row = 3, column = 0)
+        self.deptentry = tk.Entry(self)
+        self.deptentry.grid(row = 3, column = 1)
+
+    def submit(self):
+        name = self.entry_name.get()
+        age = self.entry_age.get()
+        dept = self.deptentry.get()
+        self.display_employee_info(name, age, dept)
+
+    def display_employee_info(self, name, age, dept):
+        info_window = tk.Toplevel(self)
+        info_window.title("Manager Info")
+        #info_window.geometry("300x100")
+        #info_window.pack(pady = 10)
+
+        lblname = tk.Label(info_window, text = f"Name: {name}")
+        lblname.pack()
+        lblage = tk.Label(info_window, text = f"Age: {age}")
+        lblage.pack()
+        lbldept = tk.Label(info_window, text = f"Dept: {dept}")
+        lbldept.pack()
+
+if __name__ == "__main__":
+    app = ManagerForm()
+    app.mainloop()
+

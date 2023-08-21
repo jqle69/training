@@ -1,0 +1,70 @@
+Timestamp: 2023-08-07 12:25:36.917732 
+Name: John Le
+Age Range: 50+
+Education Level: College 
+Ethnicity: Asian 
+Political Affiliation: Independent 
+Income Level: 100+
+Timestamp: 2023-08-07 12:56:59.975364 
+Name: John Le
+Age Range: 50+
+Education Level: College 
+Ethnicity: Asian 
+Political Affiliation: Independent 
+Income Level: 100K+
+Timestamp: 2023-08-07 12:57:33.347065 
+Name: John Le
+Age Range: 50+
+Education Level: College 
+Ethnicity: Asian 
+Political Affiliation: Independent 
+Income Level: 100K+
+Timestamp: 2023-08-07 12:58:17.172369 
+Name: John Le
+Age Range: 50+
+Education Level: College 
+Ethnicity: Asian 
+Political Affiliation: Independent 
+Income Level: 100K+
+Timestamp: 2023-08-07 13:00:04.159891 
+Name: John Le
+Age Range: 50+
+Education Level: College 
+Ethnicity: Asian 
+Political Affiliation: Independent 
+Income Level: 100K+
+Timestamp: 2023-08-07 13:37:26.457360 
+Name: John Le
+Age Range: 50+
+Education Level: College 
+Ethnicity: Asian 
+Political Affiliation: Independent 
+Income Level: 100K+
+Timestamp: 2023-08-07 13:39:13.656454 
+Name: John Le
+Age Range: 50+
+Education Level: College 
+Ethnicity: Asian 
+Political Affiliation: Independent 
+Income Level: 100K+
+Timestamp: 2023-08-07 13:39:38.724495 
+Name: John Le
+Age Range: 50+
+Education Level: College 
+Ethnicity: Asian 
+Political Affiliation: Independent 
+Income Level: 100K+
+Timestamp: 2023-08-07 13:56:30.980430 
+Name: Harry Styles
+Age Range: 25-50
+Education Level: College 
+Ethnicity: Caucasian 
+Political Affiliation: Republican 
+Income Level: 100K+
+Timestamp: 2023-08-07 14:33:25.446254 
+Name: Ken Walker
+Age Range: 1 to 24
+Education Level: College 
+Ethnicity: Other 
+Political Affiliation: Republican 
+Income Level: 100K+

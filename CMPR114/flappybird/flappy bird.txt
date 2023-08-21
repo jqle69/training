@@ -1,0 +1,147 @@
+import tkinter as tk
+import random
+
+class FlappyBirdGame:
+    def __init__(self):
+        self.window = tk.Tk()
+        self.window.title("Flappy Bird")
+        self.canvas_width = 400
+        self.canvas_height = 600
+        self.canvas = tk.Canvas(self.window, width=self.canvas_width, height=self.canvas_height)
+        self.canvas.pack()
+
+        self.bird_radius = 15
+        self.bird_pos = [self.canvas_width/2, self.canvas_height/2]
+        self.bird = self.canvas.create_oval(
+            self.bird_pos[0] - self.bird_radius,
+            self.bird_pos[1] - self.bird_radius,
+            self.bird_pos[0] + self.bird_radius,
+            self.bird_pos[1] + self.bird_radius,
+            fill="yellow"
+        )
+
+        self.pipe_width = 60
+        self.pipe_gap = 200
+        self.pipe_speed = 5
+        self.pipes = []
+
+        self.score = 0
+        self.score_label = self.canvas.create_text(
+            self.canvas_width - 50,
+            30,
+            text=f"Score: {self.score}",
+            font=("Arial", 16),
+            fill="black"
+        )
+
+        self.gravity = 0.4
+        self.jump_speed = -7
+        self.is_jumping = False
+
+        self.game_over = False
+
+        self.restart_button = tk.Button(self.window, text="Restart", command=self.restart)
+        self.restart_button.pack()
+        self.restart_button.place(x=10, y=10)
+
+        self.window.bind("<space>", self.jump)
+        self.update_id = None
+
+        self.create_pipe()
+        self.update()
+
+    def create_pipe(self):
+        pipe_height = random.randint(100, self.canvas_height - self.pipe_gap - 100)
+        upper_pipe = self.canvas.create_rectangle(
+            self.canvas_width,
+            0,
+            self.canvas_width + self.pipe_width,
+            pipe_height,
+            fill="green"
+        )
+        lower_pipe = self.canvas.create_rectangle(
+            self.canvas_width,
+            pipe_height + self.pipe_gap,
+            self.canvas_width + self.pipe_width,
+            self.canvas_height,
+            fill="green"
+        )
+        self.pipes.append((upper_pipe, lower_pipe))
+        if not self.game_over:
+            self.window.after(3000, self.create_pipe)
+
+    def jump(self, event):
+        if not self.game_over:
+            self.is_jumping = True
+            self.jump_speed = -7
+
+    def update(self):
+        if not self.game_over:
+            if self.is_jumping:
+                self.canvas.move(self.bird, 0, self.jump_speed)
+                self.jump_speed += self.gravity
+                self.is_colliding()
+
+            for pipe_pair in self.pipes:
+                self.canvas.move(pipe_pair[0], -self.pipe_speed, 0)
+                self.canvas.move(pipe_pair[1], -self.pipe_speed, 0)
+                if self.canvas.coords(pipe_pair[0])[2] < 0:
+                    self.canvas.delete(pipe_pair[0])
+                    self.canvas.delete(pipe_pair[1])
+                    self.pipes.remove(pipe_pair)
+                    self.score += 1
+                    self.canvas.itemconfigure(self.score_label, text=f"Score: {self.score}")
+
+            self.is_colliding()
+
+        self.update_id = self.window.after(30, self.update)
+
+    def is_colliding(self):
+        bird_coords = self.canvas.coords(self.bird)
+        if (
+            bird_coords[1] <= 0
+            or bird_coords[3] >= self.canvas_height
+            or any(
+                self.canvas.bbox(pipe[0])[2] >= bird_coords[0] >= self.canvas.bbox(pipe[0])[0]
+                and (
+                    bird_coords[1] <= self.canvas.bbox(pipe[0])[3]
+                    or bird_coords[3] >= self.canvas.bbox(pipe[1])[1]
+                )
+                for pipe in self.pipes
+            )
+        ):
+            self.game_over = True
+            self.canvas.create_text(
+                self.canvas_width/2,
+                self.canvas_height/2,
+                text="Game Over",
+                font=("Arial", 32),
+                fill="red"
+            )
+            self.restart_button.configure(state=tk.NORMAL)
+            self.window.after_cancel(self.update_id)
+
+    def restart(self):
+        if self.game_over:
+            self.canvas.delete(tk.ALL)
+            self.bird_pos = [self.canvas_width/2, self.canvas_height/2]
+            self.bird = self.canvas.create_oval(
+                self.bird_pos[0] - self.bird_radius,
+                self.bird_pos[1] - self.bird_radius,
+                self.bird_pos[0] + self.bird_radius,
+                self.bird_pos[1] + self.bird_radius,
+                fill="yellow"
+            )
+            self.pipes = []
+            self.score = 0
+            self.canvas.itemconfigure(self.score_label, text=f"Score: {self.score}")
+            self.is_jumping = False
+            self.game_over = False
+            self.restart_button.configure(state=tk.DISABLED)
+
+            self.create_pipe()
+            self.update()
+
+if __name__ == "__main__":
+    game = FlappyBirdGame()
+    game.window.mainloop()

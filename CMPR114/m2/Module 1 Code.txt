@@ -1,0 +1,27 @@
+
+
+def write_to_file():
+        global name, age
+
+        file_name = "output.txt"
+
+        with open(file_name,'a') as file:
+            file.write(f"Name: {name} \n")
+            file.write("Age " + str(age))
+
+        print(f"Data was written  {file_name} was a success")
+
+while True:
+             name =input('enter your name or type (q or Q) to quit the program')
+             if name.lower()=='q':
+              
+              break #this will break the while statement prematurely.
+
+             age = input('enter your age ')
+
+             write_to_file()
+
+print("END")
+
+
+

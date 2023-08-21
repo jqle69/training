@@ -1,0 +1,4 @@
+
+The three numbers are: 10, 30, 50
+The total is: 90
+The average is: 30.0

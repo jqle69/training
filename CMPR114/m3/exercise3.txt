@@ -1,0 +1,8 @@
+Sale Amount for day 1 is $1,000.00
+Sale Amount for day 2 is $1,000.00
+Sale Amount for day 3 is $1,000.00
+Sale Amount for day 4 is $1,000.00
+Sale Amount for day 5 is $1,000.00
+Base Salry:  $75,000.00
+Total Sale:  $5,000.00
+Commission:  $7,500.00

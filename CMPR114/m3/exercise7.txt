@@ -1,0 +1,4 @@
+
+Student name is John Le.
+Average score is 81.0.
+Grade is B.

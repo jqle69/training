@@ -1,0 +1,7 @@
+Student Name:  John Le
+Student ID:  SAC325554-01
+Sex:  Male
+
+The three scores are 92, 95, 98.
+The total is 285.
+The average is 95.00.

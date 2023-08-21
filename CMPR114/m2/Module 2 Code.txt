@@ -1,0 +1,37 @@
+def write():
+    global name, age
+    file = 'C:\\Users\\techi\\Downloads\\info.txt'
+    file1 = 'C:\\Users\\techi\\Downloads\\info1.txt'
+
+    with open(file, 'a') as file:
+        file.write(f"Name: {name}")
+        file.write(f"Age: {age}")
+
+    print("The info recorded: " + name + ", " + str(age))
+
+    with open(file1, 'a') as file1:
+        file1.write(f"Name: {name}")
+        file1.write(f"Age: {age}")
+
+    print("The info recorded: " + name + ", " + str(age))
+
+def get_user_input():
+    name = input('Enter the name: or q to quit ')
+    if name.lower() == 'q':
+        return None, None #do not return anything for name and age
+
+    age = input('Enter the Age: ')
+    return name, age #calls name and age from write function
+
+
+
+while True:
+    name, age = get_user_input()
+    if name=="" or age =="": 
+        print("Name or Age cannot be blank, skipping writing to the files.")
+        name.strip()
+        age.strip() #going to delete any whitespaces or character defined
+ 
+
+write()
+

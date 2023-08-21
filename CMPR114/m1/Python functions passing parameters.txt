@@ -1,0 +1,27 @@
+def first_function(present_value):#passing 1 parameter in () that will cascade down
+                                  #to the second function below.
+    future_value= float(input('enter the desire future value'))
+    rate = float(input('enter the annual interest rate'))
+    years= float(input('enter the # of years'))
+    present_value = future_value/ (1.0 + rate) ** years
+    print('you will need to deposit this amount ', 
+          "${:,.2f}".format(present_value))
+   
+    result = second_function(present_value)
+   
+
+def second_function(present_value):#second function that is calling the present_value
+                                   #or the results
+   
+    file = open('deposit.txt','a')
+    file.write('\nyou will need to deposit this amount ' 
+               + "${:,.2f}".format(present_value) )
+  
+
+ #closes the writer
+    file.close()
+    print("confirmed")
+
+def main(): 
+    first_function("CONFIRMED")#full fills the parameter for this function
+main()

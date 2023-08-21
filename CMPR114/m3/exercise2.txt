@@ -1,0 +1,5 @@
+Input #1: 22
+Input #2: 55
+Input #3: 88
+Total: 165
+Average: 55.0
